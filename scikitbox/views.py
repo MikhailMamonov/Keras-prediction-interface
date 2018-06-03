@@ -35,7 +35,7 @@ NEG_DIR = "./scikitbox/static/images/training/neg/"
 def static_url_collect(directory_path):
     '''helper method to get static url paths of images located inside
     the directory_path parameter'''
-    extensions = ['jpg', 'JPG', 'png', 'PNG']
+    extensions = ['jpg', 'JPG', 'png', 'PNG','bmp','BMP']
     images = []
     for ext in extensions:
         images += glob(directory_path+"*."+ext)
@@ -99,7 +99,7 @@ def uploadSingle(request):
         norm_fil = open(ntest_path,"wb")
         norm_fil.write(data)
         norm_fil.close()
-        tt.normalize_directory(NTEST_DIR, (28, 28))
+        tt.normalize_directory(NTEST_DIR, (141, 141))
 
         return redirect('index')
 
@@ -176,7 +176,7 @@ def invert(request):
 
 @login_required
 def normalizeTraining(request):
-    size = (28,28)
+    size = (141,141)
     base_dir = './scikitbox/static/images/training/'
 
     tt.normalize_directory(base_dir + 'pos/', size)
@@ -254,6 +254,6 @@ def save_image(request):
     ntest_path = os.path.join(NTEST_DIR, file_name)
     with open(ntest_path,"wb") as norm_fil:
         norm_fil.write(data)
-    tt.normalize_directory(NTEST_DIR, (28, 28))
+    tt.normalize_directory(NTEST_DIR, (141, 141))
 
     return JsonResponse(data={'url': str(file_url)})

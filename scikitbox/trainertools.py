@@ -30,7 +30,7 @@ def get_rgb_feature_list(pil_image):
 def collect_images(filepath):
     if filepath[-1] != '/':
         filepath += '/'
-    extensions = ['jpg', 'JPG', 'png', 'PNG']
+    extensions = ['jpg', 'JPG', 'png', 'PNG','bmp','BMP']
     images = []
     for ext in extensions:
         images += glob(filepath+"*."+ext)
@@ -107,10 +107,9 @@ def color_to_grayscale_directory(filepath):
 
 def normalize_directory(filepath, size):
     resize_directory(filepath,size)
-    converted_paths = color_to_grayscale_directory(filepath)
     # converted_paths = edge_detect_directory(filepath)
 
-    return converted_paths
+    return 0
 
 
 def write_threshold_mask(image_filepath, threshold=None):
@@ -172,10 +171,9 @@ def test_mlp_mnist_classifier_on_single(filepath):
     #
     # vfunc = np.vectorize(black_white_inverter)
     # im = vfunc(im)
-    single_example = np.array([im.ravel()]) # pass in list of images for multiple batches
-
+    single_example = np.array([im]) # pass in list of images for multiple batches
     if not KERAS_MODEL:
-        KERAS_MODEL = load_model('mnist-model-20-iterations.h5')
+        KERAS_MODEL = load_model('model.h5')
     prediction = KERAS_MODEL.predict(single_example) # (1,1) array cause only 1 data passed in
 
     results = defaultdict(list)

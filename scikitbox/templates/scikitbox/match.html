@@ -3,6 +3,8 @@
 <link rel="stylesheet" type="text/css" href="{% static 'scikitbox/main.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'scikitbox/bootstrap.css' %}" />
 
+<p>Results</p>
+<a href="{% url "index" %}"> Back </a>
 <div class="container-fluid wrapper">
 	{% for result in image_clf_results %}
     <div class="match-result positive">
@@ -20,5 +22,5 @@
 
 	</div>
 	{% endfor %}
-    <a href="{% url "index" %}"> Back </a>
+    
 </div>

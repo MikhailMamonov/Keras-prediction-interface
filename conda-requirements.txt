@@ -1,4 +1,4 @@
-nomkl
+
 pillow==4.1.0
 numpy
 scipy

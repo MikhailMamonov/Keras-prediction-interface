@@ -45,7 +45,7 @@ def write_files(urls,directory="images/"):
 	#5 second tiemout
 	url_timeout = 5
 	count = 0
-	accepted_extensions = ['.jpg','.png']
+	accepted_extensions = ['jpg', 'png','bmp','BMP']
 	for url in urls:
 		#clean any query string on end of name
 		url = url.split('?',1)[0]
