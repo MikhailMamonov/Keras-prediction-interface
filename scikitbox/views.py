@@ -35,7 +35,7 @@ NEG_DIR = "./scikitbox/static/images/training/neg/"
 def static_url_collect(directory_path):
     '''helper method to get static url paths of images located inside
     the directory_path parameter'''
-    extensions = ['jpg', 'JPG', 'png', 'PNG','bmp','BMP']
+    extensions = ['jpg', 'JPG', 'png', 'PNG','bmp']
     images = []
     for ext in extensions:
         images += glob(directory_path+"*."+ext)

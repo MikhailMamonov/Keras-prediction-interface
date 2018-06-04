@@ -9,79 +9,50 @@
 
 		<div id='testImages' style="display:block">
 		{% for image_url in test_images %}
-			<img src={{image_url}} height='50' width='50' >
+			<img src={{image_url}} height='100' width='100' >
 		{% endfor %}
-		</div>
+        </div>
+    </div>
+</div> <!-- end row -->
     {%  if perms.scikitbox.image_rights %}
-		<form action="/box/uploadSingle" method="post" enctype="multipart/form-data">
-		    Select a file: <input type="file" name="upload" /><br/>
-		    <input type="submit" value="upload to gallery" />
-		</form>
-		<a href="/box/clearTest"> clear test gallery </a>
-
+    <div class="row blue1">
+    <div class="col-xs-12">	
+        <form action="/box/uploadSingle" method="post" enctype="multipart/form-data">
+            <div class="form-group row">
+                    <div class="col-sm-6">
+            Select a file:
+             <input  type="file" name="upload" />
+                    </div>
+            <div class="col-sm-6">
+                <br>
+                <input class='form-control-file btn btn-primary' type="submit" value="upload to gallery" />
+               
+                <a href="/box/clearTest" class="btn btn-danger"> clear test gallery </a>
+            </div>
+		    
+        </div>
+        </form>
+        
+    </div>
+</div> <!-- end row -->
     {%  endif %}
 			
-	</div>
- </div> <!-- end row -->
 
- <div class="row green1">
-	<div class="col-xs-6">
-		{%  if perms.scikitbox.image_rights %}
+    
+ <div class="row blue">
+	
+    <div class="col-xs-4" ></div>
+    <div class="col-xs-4" >
+        <br>
+        <br>
+        <br>
+        <a class="btn btn-primary btn-lg btn-block" href="/box/match?type=test"> match test </a>
+         <br>
+    </div>
+    
+    <div class="col-xs-4" ></div>
 
-    <h4> Collect training data </h4>
-		
-		<form action='/box/setupTraining' method="POST">
-		  Collect Images with keywords : <input type="text" name="training_keywords" />
-		  <br/>
-		  <input type="radio" name="classifier" value="positive" checked>Pos<br>
-		<input type="radio" name="classifier" value="negative">Neg <br>
-
-		  <input type="submit" value="collect!" />
-		</form>
-        <div> <h4> Pos collected :  {{pos_image_count}} </h4>
-			<a href="/box/viewPositive"> view pos</a> <br/>
-			<a href="/box/clearPositive"> clear pos</a>
-		</div>
-		<div> <h4> Neg collected : {{neg_image_count}} </h4>
-			<a href="/box/viewNegative"> view neg</a> <br/>
-			<a href="/box/clearPositive"> clear neg</a>
-		</div>
-
-    {%  endif %}
-	</div>
-
-	<div class="col-xs-6">
-        <h4> Draw </h4>
-        <div>
-        <canvas class="sketchpad" id="sketchpad"><canvas>
-        </div>
-
-        <a id="clearImage">Clear image </a> <br>
-        <a id="submitImage">Submit image </a>
-
-	</div>	
- </div> <!-- end row -->
-
- <div class="row green-light">
-	<div class="col-xs-6">
-    {%  if perms.scikitbox.image_rights %}
-
-		<h4> Normalize the Pos/Neg data </h4>
-		<form action='/box/normalizeTraining' method="POST">
-		  <input type="submit" value="normalize" />
-		</form>
-    <p> MNIST classifier is trained for white digit on black background</p>
-    <a href="/box/invert?type=pos"> invert color for pos </a> <br>
-    <a href="/box/invert?type=neg"> invert color for neg </a> <br>
-     {%  endif %}
-	</div>
-	<div class="col-xs-6 earthy" >
-		<h4> Match against data (Normalize first)</h4>
-
-    <a href="/box/match?type=test"> match test </a> <br>
-    <a href="/box/match?type=pos"> match pos </a> <br>
-		<a href="/box/match?type=neg"> match neg </a> <br>
-	</div>
+	
  </div> <!-- end row -->
 
 
